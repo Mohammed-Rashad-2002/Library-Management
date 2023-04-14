@@ -11,26 +11,36 @@ public class LibraryManagement {
 		int num = sc.nextInt();
 		if (num == 1) {
 			if (ManagementWorks.userDetails() == true) {
-				System.out.println(
-						"Press 1 to add book in the library\nPress 2 to read book from library\nPress 3 to remove book from library");
-				switch (sc.nextInt()) {
-				case 1: {
-					ManagementWorks.addBook();
-					break;
+				boolean b=true;
+				while (b) {
+					System.out.println(
+							"Press 1 to add book in the library\nPress 2 to read book from library\nPress 3 to remove book from library\nPress 4 for exit");
+					switch (sc.nextInt()) {
+					case 1: {
+						ManagementWorks.addBook();
+						break;
+					}
+					case 2: {
+						ManagementWorks.readBook();
+						break;
+					}
+					case 3: {
+						ManagementWorks.removeBook();
+						break;
+					}
+					case 4: {
+						b=false;
+						break;
+					}
+					default:
+						System.out.println("You have entered wrong Input check again");
+						break;
+					}
 				}
-				case 2: {
-					ManagementWorks.readBook();
-					break;
-				}
-				case 3: {
-					ManagementWorks.removeBook();
-					break;
-				}
-				default:
-					System.out.println("You have entered wrong Input check again");
-					break;
-				}
+				
 
+			}else {
+				System.out.println("You entered wrong input please check again");
 			}
 
 		} else if (num == 2) {
