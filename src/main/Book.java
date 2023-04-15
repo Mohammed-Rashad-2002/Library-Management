@@ -16,10 +16,10 @@ public class Book {
 		this.language = language;
 		this.year = year;
 	}
-	
+
 	@Override
 	public String toString() {
-		return ""+title+",\n"+author+",\n"+language+",\n"+year;
+		return "" + title + ",\n" + author + ",\n" + language + ",\n" + year;
 	}
 
 	public String getTitle() {
