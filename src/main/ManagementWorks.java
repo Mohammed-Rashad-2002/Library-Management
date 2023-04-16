@@ -14,6 +14,7 @@ import authorization.UserAutho;
 
 public class ManagementWorks {
 	static String path1, path2;
+	static int bNo;
 	static Scanner sc = new Scanner(System.in);
 	static OutputStream os, os2;
 	static List<OutputStream> osl = new ArrayList<>();
@@ -65,25 +66,29 @@ public class ManagementWorks {
 			System.out.println("Enter the Story");
 			sc.nextLine();
 			String data = sc.nextLine();
-//			b1 = data.getBytes();
+			b1 = data.getBytes();
 			b3.add(data.getBytes());
-//			b2 = book1.toString().getBytes();
-			b4.add(book1.toString().getBytes());
+			b2 = book1.toString().getBytes();
+//			b4.add(book1.toString().getBytes());
+			for (byte b : b1) {
+				System.out.println(b);
+			}
+			System.out.println("************");
+			for (Object b : b3) {
+				System.out.println(b);
+			}
 			try {
-				int length = b3.size();
-				if (length > 0) {
-					System.out.println("\nB1:" + b1);
-					System.out.println("B3: " + b3.get(length - 1));
-					System.out.println("B4: "+b4.get(length - 1));
-					os.write((byte) b3.get(length - 1));
-					os2.write((byte) b4.get(length - 1));
-					System.out.println("Done");
+//					System.out.println("\nB1:" + b1);
+//					System.out.println("B3: " + b3.get(length - 1));
+//					System.out.println("B4: "+b4.get(length - 1));
+				os.write(b1);
+				os2.write(b2);
+				System.out.println("Done");
 //					booklist.add(book1);
-					bookContent.add(path1);
-					booklist.add(path2);
-					os.close();
-					os2.close();
-				}
+				bookContent.add(path1);
+				booklist.add(path2);
+				os.close();
+				os2.close();
 
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -133,7 +138,7 @@ public class ManagementWorks {
 			System.out.println(i + 1 + ". " + bookName.get(i));
 		}
 		System.out.print("Enter the Book Number you want to Read: ");
-		int bNo = sc.nextInt();
+		bNo= sc.nextInt();
 
 		for (int i = 0; i < bookName.size(); i++) {
 			if (i == bNo - 1) {
@@ -142,9 +147,13 @@ public class ManagementWorks {
 					is = new FileInputStream(booklist.get(i).toString());
 					int res = is.read();
 					String fileData = new String(b2);
+					String story=new String(b1);
 					String[] word = fileData.split(",");
 					System.out.println("Title: " + word[0]);
 					System.out.println("Author: " + word[1]);
+					System.out.println("Language: "+ word[2]);
+					System.out.println("Year: "+word[3]);
+					System.out.println("Story: "+ story);
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
@@ -154,6 +163,18 @@ public class ManagementWorks {
 	}
 
 	public static void removeBook() {
-		System.out.println("Book removing page");
+		System.out.println("Here are the available book: ");
+		for (int i = 0; i < bookName.size(); i++) {
+			System.out.println(i+1+". "+bookName.get(i).toString());
+		}
+		System.out.println("Which book you want to remove");
+		bNo=sc.nextInt();
+		if (booklist.size()>=bNo-1) {
+			booklist.remove(bNo-1);
+			bookContent.remove(bNo-1);
+			bookName.remove(bNo-1);	
+		}else {
+			System.out.println("Book is Not available");
+		}
 	}
 }
