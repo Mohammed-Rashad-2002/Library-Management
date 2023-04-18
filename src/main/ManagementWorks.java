@@ -22,8 +22,6 @@ public class ManagementWorks {
 	static List booklist = new ArrayList();
 	static List bookContent = new ArrayList();
 	static List bookName = new ArrayList();
-	static List b3 = new ArrayList<>();
-	static List b4 = new ArrayList<>();
 	static byte[] b1;
 	static byte[] b2;
 
@@ -67,24 +65,12 @@ public class ManagementWorks {
 			sc.nextLine();
 			String data = sc.nextLine();
 			b1 = data.getBytes();
-			b3.add(data.getBytes());
 			b2 = book1.toString().getBytes();
-//			b4.add(book1.toString().getBytes());
-			for (byte b : b1) {
-				System.out.println(b);
-			}
-			System.out.println("************");
-			for (Object b : b3) {
-				System.out.println(b);
-			}
 			try {
-//					System.out.println("\nB1:" + b1);
-//					System.out.println("B3: " + b3.get(length - 1));
-//					System.out.println("B4: "+b4.get(length - 1));
+
 				os.write(b1);
 				os2.write(b2);
 				System.out.println("Done");
-//					booklist.add(book1);
 				bookContent.add(path1);
 				booklist.add(path2);
 				os.close();
@@ -100,45 +86,19 @@ public class ManagementWorks {
 	}
 
 	public static void readBook() {
-//		String bookName="",fileData="";
-//		for (Book object : booklist) {
-//			System.out.println(object.getTitle());
-//		}
-//		if (booklist.size() > 0) {
-//			System.out.println("Here are the Available book");
-//			for (int i = 0; i < booklist.size(); i++) {
-//				System.out.println(booklist.get(i).getTitle());
-//			}
-//		} else {
-//			System.out.println("Book is not available");
-//		}
-
-//		for (int i = 0; i < booklist.size(); i++) {
-//			System.out.println(booklist.get(i));
-////			System.out.println(booklist.get(i).getTitle());
-//			try {
-//			is=new FileInputStream(booklist.get(i).toString());
-////			System.out.println("path: "+booklist.get(i).toString());
-//			int res=is.read();
-////			System.out.println((char)res);
-//			fileData=new String(b2);
-//			String []word=fileData.split(" ");
-////			System.out.println(word);
-//			bookName=word[0];
-//			System.out.println(bookName);
-////			System.out.println("end");
-//			is.close();
-//			}catch (Exception e) {
-//				// TODO: handle exception
-//				System.out.println("File Not found");
-//			}
-//		}
+		
 		System.out.println("Here are the Available book in the library ");
+		
 		for (int i = 0; i < bookName.size(); i++) {
 			System.out.println(i + 1 + ". " + bookName.get(i));
 		}
-		System.out.print("Enter the Book Number you want to Read: ");
-		bNo= sc.nextInt();
+		if (bookName.size()>0) {
+			System.out.print("Enter the Book Number you want to Read: ");
+			bNo = sc.nextInt();	
+		}else {
+			System.out.println("No Book Available....");
+		}
+		
 
 		for (int i = 0; i < bookName.size(); i++) {
 			if (i == bNo - 1) {
@@ -147,13 +107,15 @@ public class ManagementWorks {
 					is = new FileInputStream(booklist.get(i).toString());
 					int res = is.read();
 					String fileData = new String(b2);
-					String story=new String(b1);
+					String story = new String(b1);
 					String[] word = fileData.split(",");
-					System.out.println("Title: " + word[0]);
-					System.out.println("Author: " + word[1]);
-					System.out.println("Language: "+ word[2]);
-					System.out.println("Year: "+word[3]);
-					System.out.println("Story: "+ story);
+					System.out.print("\nTitle: " + word[0]);
+					System.out.print("\nAuthor: " + word[1]);
+					System.out.print("\nLanguage: " + word[2]);
+					System.out.print("\nYear: " + word[3]);
+					System.out.print("\nStory: " + story);
+					System.out.println();
+					System.out.println();
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
@@ -165,15 +127,15 @@ public class ManagementWorks {
 	public static void removeBook() {
 		System.out.println("Here are the available book: ");
 		for (int i = 0; i < bookName.size(); i++) {
-			System.out.println(i+1+". "+bookName.get(i).toString());
+			System.out.println(i + 1 + ". " + bookName.get(i).toString());
 		}
 		System.out.println("Which book you want to remove");
-		bNo=sc.nextInt();
-		if (booklist.size()>=bNo-1) {
-			booklist.remove(bNo-1);
-			bookContent.remove(bNo-1);
-			bookName.remove(bNo-1);	
-		}else {
+		bNo = sc.nextInt();
+		if (booklist.size() >= bNo - 1) {
+			booklist.remove(bNo - 1);
+			bookContent.remove(bNo - 1);
+			bookName.remove(bNo - 1);
+		} else {
 			System.out.println("Book is Not available");
 		}
 	}

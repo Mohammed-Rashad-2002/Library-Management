@@ -19,7 +19,7 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "" + title + ",\n" + author + ",\n" + language + ",\n" + year;
+		return "" + title + "," + author + "," + language + "," + year;
 	}
 
 	public String getTitle() {
