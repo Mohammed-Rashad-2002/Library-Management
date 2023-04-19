@@ -7,7 +7,7 @@ To run this project, you will need to have Java installed on your machine. Clone
 ## Usage
 Adding Books
 To add a book, select the "Add Book" option from the main menu. You will be prompted to enter the book title, author, publication year,and story. Once you have entered this information, the book will be added to the library.
-Add and remove book in library is only for authorize user
+Add and remove book in library is only for authorize user others can Read the available book from library
 
 ## Deleting Books
 To delete a book, select the "Delete Book" option from the main menu. You will be prompted to enter the book's ISBN. If the book is in the library, it will be deleted.
