@@ -10,7 +10,7 @@ To add a book, select the "Add Book" option from the main menu. You will be prom
 Add and remove book in library is only for authorize user others can Read the available book from library
 
 ## Deleting Books
-To delete a book, select the "Delete Book" option from the main menu. You will be prompted to enter the book's ISBN. If the book is in the library, it will be deleted.
+To delete a book, select the "Delete Book" option from the main menu. You will be prompted to enter the book's Title. If the book is in the library, it will be deleted.
 
 ## Searching for Books
 To search for a book, select the "Search Book" option from the main menu. You will be prompted to enter the book's title. If the book is in the library, its information will be displayed.
