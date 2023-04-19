@@ -11,8 +11,4 @@ public class UserAutho {
 		userList.add(new User("abrar", 22, 456388292, "chennai", "Abrar&1234"));
 		
 	}
-//	public static void main(String[] args) {
-//		user();
-//		System.out.println(userList.get(0).getName());
-//	}
 }
